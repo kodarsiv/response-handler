@@ -6,17 +6,11 @@ use Tanerincode\ResponseHandler\Contracts\ParserInterface;
 
 class Parser implements ParserInterface
 {
-    private string $errorFile;
-    private string $successFile;
+    private string $errorFile = "";
+    private string $successFile = "";
     private array $errors;
     private array $success;
     const UNDEFINED_ERROR_STRINGIFY = "undefined_error_code";
-
-    public function __construct()
-    {
-        $this->setErrorFile(config("rh.code_storage.json.storage_path.error"));
-        $this->setSuccessFile(config("rh.code_storage.json.storage_path.success"));
-    }
 
     public function parse()
     {
@@ -24,18 +18,19 @@ class Parser implements ParserInterface
     }
 
 
-    public function validateCode(int $code = null): int
+    public function validateCode(int $code): bool
     {
-        if ( is_null($code) ) {
-            return $this->getErrors()['undefined_error_code'] ?? 50001;
+        $catchResponseType = (int)substr($code, 0, 3);
+        $stack =  match ($catchResponseType) {
+            config('rh.ERRORS_START_AS') => $this->getErrors(),
+            config('rh.SUCCESS_START_AS') => $this->getSuccess()
+        };
+
+        if ( in_array($code, array_values($stack)) ){
+            return true;
         }
 
-        if ( in_array($code, $this->getErrors()) ){
-            $key = array_search($code, $this->getErrors());
-            return $this->getErrors()[$key];
-        }
-
-        return $this->getErrors()['undefined_error_code'] ?? 50001;
+        return false;
     }
 
 

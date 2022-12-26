@@ -1,6 +1,5 @@
 {
     "name": "tanerincode/response-handler",
-    "version": "0.0.1",
     "description": "A laravel package for response handling",
     "license": "MIT",
     "autoload": {

@@ -2,10 +2,28 @@
 
 namespace Tanerincode\ResponseHandler\Classes;
 
+use Illuminate\Support\Facades\File;
 use Tanerincode\ResponseHandler\Exceptions\JsonParseException;
 
 class JsonParser extends Parser
 {
+
+    public function __construct()
+    {
+
+        $errorFile = config("rh.code_storage.json.storage_path.error");
+        $successFile = config("rh.code_storage.json.storage_path.success");
+
+        if ( !File::exists($errorFile) ){
+            File::put($errorFile, json_encode(["default_type" => 5000001]));
+        }
+        if ( !File::exists($successFile) ){
+            File::put($successFile, json_encode(["default_type" => 2000001]));
+        }
+
+        $this->setErrorFile($errorFile);
+        $this->setSuccessFile($successFile);
+    }
 
     /**
      * @throws JsonParseException

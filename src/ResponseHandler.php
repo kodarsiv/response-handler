@@ -2,6 +2,7 @@
 
 namespace Tanerincode\ResponseHandler;
 
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
 use Tanerincode\ResponseHandler\Classes\JsonParser;
 use Tanerincode\ResponseHandler\Classes\RedisParser;
@@ -27,12 +28,12 @@ class ResponseHandler implements ResponseHandlerInterface
      */
     public function handle(array $arguments): array
     {
-        $this->handleMeta($arguments['meta'] ?? []);
+        $this->handleMeta($arguments[Responder::META_STRINGIFY] ?? []);
 
-        if ( !isset($arguments['data']) ){
-            $this->response['data'] = [];
+        if ( !isset($arguments[Responder::DATA_STRINGIFY]) ){
+            $this->response[Responder::DATA_STRINGIFY] = [];
         }else {
-            $this->response['data'] = $arguments['data'];
+            $this->response[Responder::DATA_STRINGIFY] = $arguments[Responder::DATA_STRINGIFY];
         }
 
         if ( $this->isNewVersionResponse() )
@@ -43,12 +44,10 @@ class ResponseHandler implements ResponseHandlerInterface
 
     private function handleMeta(array $meta = [])
     {
-        $code = $this->getErrorCodeParser()->validateCode($meta['code'] ?? null);
-
-        $this->response['meta'] = [
-            "flag" => $meta['flag'] ?? Responder::FLAG_IS_ERROR,
-            "code" => $code,
-            "type" => catch_type_by_code($code)
+        $this->response[Responder::META_STRINGIFY] = [
+            Responder::FLAG_STRINGIFY => $meta[Responder::FLAG_STRINGIFY] ?? Responder::FLAG_IS_ERROR,
+            Responder::CODE_STRINGIFY => $meta[Responder::CODE_STRINGIFY],
+            "type" => catch_type_by_code($meta[Responder::CODE_STRINGIFY])
         ];
     }
 
@@ -66,6 +65,8 @@ class ResponseHandler implements ResponseHandlerInterface
 
     public function errorCodesParser(): JsonParser|RedisParser
     {
+
+
         // we need to catch parser by config storage.
         $parser = match (config("rh.STORAGE")) {
             'redis' => new RedisParser(),

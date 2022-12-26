@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * @todo:: update descriptions
+ * @method static getErrorCodeParser()
  * */
 class Responder extends Facade
 {
