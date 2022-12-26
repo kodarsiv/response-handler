@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Facade;
 /**
  * @todo:: update descriptions
  * */
-class Responser extends Facade
+class Responder extends Facade
 {
 
     /**
@@ -42,6 +42,6 @@ class Responser extends Facade
 
     protected static function getFacadeAccessor(): string
     {
-        return "Responser";
+        return "Responder";
     }
 }

@@ -8,9 +8,8 @@ use Tanerincode\ResponseHandler\Classes\JsonParser;
 interface ResponseHandlerInterface
 {
     /**
-     * @param array $meta
-     * @param array $data
+     * @param array $arguments
      * @return array
      */
-    public function handle(array $meta, array $data): array;
+    public function handle(array $arguments): array;
 }

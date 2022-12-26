@@ -25,7 +25,7 @@ class ResponseHandlerServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind("Responser", function (){
+        $this->app->bind("Responder", function (){
             return new ResponseHandler();
         });
     }
