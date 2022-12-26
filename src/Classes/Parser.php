@@ -54,6 +54,10 @@ class Parser implements ParserInterface
         return self::UNDEFINED_ERROR_STRINGIFY;
     }
 
+    public function catchStatusCodeByCode(int $code = null): string|null
+    {
+        return (int)substr($code, 0, 3);
+    }
 
     /**
      * @return array

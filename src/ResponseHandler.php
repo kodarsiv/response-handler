@@ -8,6 +8,7 @@ use Tanerincode\ResponseHandler\Classes\JsonParser;
 use Tanerincode\ResponseHandler\Classes\RedisParser;
 use Tanerincode\ResponseHandler\Contracts\ParserInterface;
 use Tanerincode\ResponseHandler\Contracts\ResponseHandlerInterface;
+use Tanerincode\ResponseHandler\Exceptions\CodeNotExistException;
 use Tanerincode\ResponseHandler\Exceptions\ParserException;
 use Tanerincode\ResponseHandler\Facades\Responder;
 
@@ -25,6 +26,7 @@ class ResponseHandler implements ResponseHandlerInterface
     /**
      * @param array $arguments
      * @return array
+     * @throws CodeNotExistException
      */
     public function handle(array $arguments): array
     {
@@ -42,11 +44,15 @@ class ResponseHandler implements ResponseHandlerInterface
         return $this->response;
     }
 
+    /**
+     * @throws CodeNotExistException
+     */
     private function handleMeta(array $meta = [])
     {
         $this->response[Responder::META_STRINGIFY] = [
             Responder::FLAG_STRINGIFY => $meta[Responder::FLAG_STRINGIFY] ?? Responder::FLAG_IS_ERROR,
             Responder::CODE_STRINGIFY => $meta[Responder::CODE_STRINGIFY],
+            "status_code" => catch_http_code_by_response_code($meta[Responder::CODE_STRINGIFY]),
             "type" => catch_type_by_code($meta[Responder::CODE_STRINGIFY])
         ];
     }

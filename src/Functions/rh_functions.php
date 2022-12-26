@@ -2,6 +2,7 @@
 
 use Illuminate\Http\JsonResponse;
 use Tanerincode\ResponseHandler\Exceptions\CodeAlreadyExistException;
+use Tanerincode\ResponseHandler\Exceptions\CodeNotExistException;
 use Tanerincode\ResponseHandler\ResponseHandler;
 use Tanerincode\ResponseHandler\Facades\Responder;
 use Tanerincode\ResponseHandler\Classes\CodeGenerator;
@@ -19,12 +20,16 @@ if (!function_exists('resolve_response')) {
             $meta[Responder::CODE_STRINGIFY] = $arguments[Responder::CODE_STRINGIFY];
         }
 
+
         $result = $handler->handle([
             Responder::META_STRINGIFY => $meta ?? [],
-            Responder::DATA_STRINGIFY => $data ?? []
+            Responder::DATA_STRINGIFY => $arguments[Responder::DATA_STRINGIFY] ?? []
         ]);
 
-        return response()->json($result);
+        $statusCode = $result['status_code'];
+        unset($result['status_code']);
+
+        return response()->json(data: $result, status: $statusCode);
     }
 }
 if (!function_exists('catch_type_by_code')) {
@@ -53,6 +58,21 @@ if ( !function_exists("find_or_create_code") ) {
 
         $generator = new CodeGenerator();
         return $generator->generate($key, $value);
+    }
+}
+
+if ( !function_exists("catch_http_code_by_response_code") ) {
+    /**
+     * @throws CodeNotExistException
+     */
+    function catch_http_code_by_response_code(int $code): int|array
+    {
+        if ( ! Responder::getErrorCodeParser()->validateCode($code) ){
+            throw new CodeNotExistException();
+        }
+
+        return Responder::getErrorCodeParser()->catchStatusCodeByCode($code);
+
     }
 }
 
