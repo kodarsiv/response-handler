@@ -22,14 +22,8 @@ if (!function_exists('resolve_response')) {
     }
 }
 if (!function_exists('catch_type_by_code')) {
-    function catch_type_by_code(int $errorCode): string {
-        $handler = new ResponseHandler();
-        $catchResponseType = (int)substr($errorCode, 0, 3);
-
-        return match ($catchResponseType) {
-            config('rh.ERRORS_START_AS') => $handler->getErrorCodeParser()->catchTypeByErrorCode($errorCode),
-            config('rh.SUCCESS_START_AS') => $handler->getErrorCodeParser()->catchTypeByErrorCode($errorCode)
-        };
+    function catch_type_by_code(int $code): string|null {
+        return (new ResponseHandler)->getErrorCodeParser()->catchTypeByCode($code);
     }
 }
 

@@ -43,12 +43,12 @@ class ResponseHandler implements ResponseHandlerInterface
 
     private function handleMeta(array $meta = [])
     {
-        $errorCode = $this->getErrorCodeParser()->catchErrorCode($meta['code'] ?? null);
+        $code = $this->getErrorCodeParser()->validateCode($meta['code'] ?? null);
 
         $this->response['meta'] = [
             "flag" => $meta['flag'] ?? Responder::FLAG_IS_ERROR,
-            "code" => $errorCode,
-            "type" => catch_type_by_code($errorCode)
+            "code" => $code,
+            "type" => catch_type_by_code($code)
         ];
     }
 

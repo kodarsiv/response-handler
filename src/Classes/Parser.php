@@ -24,7 +24,7 @@ class Parser implements ParserInterface
     }
 
 
-    public function catchErrorCode(int $code = null): int
+    public function validateCode(int $code = null): int
     {
         if ( is_null($code) ) {
             return $this->getErrors()['undefined_error_code'] ?? 50001;
@@ -39,14 +39,20 @@ class Parser implements ParserInterface
     }
 
 
-    public function catchTypeByErrorCode(int $code = null): string
+    public function catchTypeByCode(int $code = null): string|null
     {
+        $catchResponseType = (int)substr($code, 0, 3);
+        $stack =  match ($catchResponseType) {
+            config('rh.ERRORS_START_AS') => $this->getErrors(),
+            config('rh.SUCCESS_START_AS') => $this->getSuccess()
+        };
+
         if ( is_null($code) ) {
             return self::UNDEFINED_ERROR_STRINGIFY;
         }
 
-        if ( in_array($code, $this->getErrors()) ){
-            $key = array_search($code, $this->getErrors());
+        if ( in_array($code, $stack) ){
+            $key = array_search($code, $stack);
             return ( $key ) ? $key : self::UNDEFINED_ERROR_STRINGIFY;
         }
 
