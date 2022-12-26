@@ -28,6 +28,8 @@ return [
             // ..
         ]
     ],
-    "ERRORS_START_AS" => 500,
-    "SUCCESS_START_AS" => 200
+    // error code generator generate base code this is
+    "ERRORS_START_AS" => env("RH_ERRORS_START_AS", 500),
+    // success code generator generate base code this is
+    "SUCCESS_START_AS" => env("RH_SUCCESS_START_AS", 200)
 ];

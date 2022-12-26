@@ -2,7 +2,6 @@
 
 namespace Tanerincode\ResponseHandler\Classes;
 
-use Tanerincode\ResponseHandler\Contracts\ParserInterface;
 use Tanerincode\ResponseHandler\Exceptions\JsonParseException;
 
 class JsonParser extends Parser

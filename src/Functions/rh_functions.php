@@ -2,6 +2,7 @@
 
 use Illuminate\Http\JsonResponse;
 use Tanerincode\ResponseHandler\ResponseHandler;
+use Tanerincode\ResponseHandler\Facades\Responder;
 
 if (!function_exists('resolve_response')) {
     function resolve_response(...$arguments): JsonResponse {
@@ -9,13 +10,13 @@ if (!function_exists('resolve_response')) {
         $handler = new ResponseHandler();
         $handler->setNewVersionResponse(true);
 
-        if ( isset($arguments['code']) ){
-            $meta['code'] = $arguments['code'];
+        if ( isset($arguments[Responder::CODE_STRINGIFY]) ){
+            $meta[Responder::CODE_STRINGIFY] = $arguments[Responder::CODE_STRINGIFY];
         }
 
         $result = $handler->handle([
-            "meta" => $meta ?? [],
-            "data" => $data ?? []
+            Responder::META_STRINGIFY => $meta ?? [],
+            Responder::DATA_STRINGIFY => $data ?? []
         ]);
 
         return response()->json($result);

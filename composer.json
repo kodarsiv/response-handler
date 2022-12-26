@@ -7,7 +7,7 @@
             "Tanerincode\\ResponseHandler\\": "src/"
         },
         "files": [
-            "src/Functions/RS_Functions.php"
+            "src/Functions/rh_functions.php"
         ]
     },
     "authors": [

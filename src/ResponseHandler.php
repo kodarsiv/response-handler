@@ -55,7 +55,7 @@ class ResponseHandler implements ResponseHandlerInterface
     private function clearResponse()
     {
         $responseTMP = [];
-        foreach ($this->response['meta'] as $key => $response) {
+        foreach ($this->response[Responder::META_STRINGIFY] as $key => $response) {
             $responseTMP[$key] = $response;
         }
         $responseTMP["data"] = $this->response['data'];

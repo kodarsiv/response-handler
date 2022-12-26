@@ -16,6 +16,11 @@ class ResponseHandlerServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->mergeConfigFrom(__DIR__."/config.php", "rh");
+
+        // if you need to publish here is
+        $this->publishes([
+            __DIR__ . '/config.php' => config_path('rh_config.php'),
+        ], 'rh.config');
     }
 
     /**
