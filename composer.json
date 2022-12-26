@@ -5,7 +5,10 @@
     "autoload": {
         "psr-4": {
             "Tanerincode\\ResponseHandler\\": "src/"
-        }
+        },
+        "files": [
+            "src/Functions/RS_Functions.php"
+        ]
     },
     "authors": [
         {
@@ -17,6 +20,14 @@
     "require": {
         "php": "8.1.*",
         "illuminate/support": "^9.45.1",
-        "illuminate/http": "^9.45.1"
+        "illuminate/http": "^9.45.1",
+        "illuminated/helper-functions": "^9.1.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Tanerincode\\ResponseHandler\\ResponseHandlerServiceProvider"
+            ]
+        }
     }
 }

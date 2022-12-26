@@ -3,15 +3,14 @@
 namespace Tanerincode\ResponseHandler\Contracts;
 
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Response;
+use Tanerincode\ResponseHandler\Classes\JsonParser;
 
 interface ResponseHandlerInterface
 {
     /**
      * @param array $meta
      * @param array $data
-     * @param int $code
-     * @return JsonResponse
+     * @return array
      */
-    public function handle(array $meta, array $data, int $code): JsonResponse;
+    public function handle(array $meta, array $data): array;
 }

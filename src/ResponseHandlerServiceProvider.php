@@ -13,9 +13,9 @@ class ResponseHandlerServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
-
+        $this->mergeConfigFrom(__DIR__."/config.php", "rh");
     }
 
     /**
@@ -23,7 +23,7 @@ class ResponseHandlerServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->bind("Responser", function (){
             return new ResponseHandler();

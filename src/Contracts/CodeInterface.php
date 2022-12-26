@@ -2,9 +2,9 @@
 
 namespace Tanerincode\ResponseHandler\Contracts;
 
-use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Response;
 
-interface CodesInterface
+interface CodeInterface
 {
 
     /**
@@ -23,6 +23,6 @@ interface CodesInterface
      *
      *
      **/
-    public function finalize():JsonResponse;
+    public function finalize(): Response;
 
 }

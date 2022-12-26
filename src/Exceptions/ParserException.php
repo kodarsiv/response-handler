@@ -5,7 +5,7 @@ namespace Tanerincode\ResponseHandler\Exceptions;
 use Exception;
 use Throwable;
 
-class CannotConnectedRedisException extends Exception
+class ParserException extends Exception
 {
     /**
      *

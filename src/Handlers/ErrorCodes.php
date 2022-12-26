@@ -1,11 +1,12 @@
 <?php
 
-namespace Tanerincode\ResponseHandler\Errors;
+namespace Tanerincode\ResponseHandler\Handlers;
 
 use Illuminate\Http\JsonResponse;
-use Tanerincode\ResponseHandler\Contracts\CodesInterface;
+use Illuminate\Support\Facades\Response;
+use Tanerincode\ResponseHandler\Contracts\CodeInterface;
 
-class CodesHandler implements CodesInterface
+class ErrorCodes implements CodeInterface
 {
 
     public function prepare(...$arguments): void
@@ -20,6 +21,7 @@ class CodesHandler implements CodesInterface
 
     public function finalize(): JsonResponse
     {
+        return Response::json();
         // TODO: Implement finalize() method.
     }
 }

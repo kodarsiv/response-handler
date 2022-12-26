@@ -3,8 +3,11 @@
 namespace Tanerincode\ResponseHandler;
 
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Response;
+use Tanerincode\ResponseHandler\Classes\JsonParser;
+use Tanerincode\ResponseHandler\Classes\RedisParser;
 use Tanerincode\ResponseHandler\Contracts\ResponseHandlerInterface;
+use Tanerincode\ResponseHandler\Exceptions\JsonParseException;
+use Tanerincode\ResponseHandler\Exceptions\ParserException;
 
 class ResponseHandler implements ResponseHandlerInterface
 {
@@ -12,11 +15,27 @@ class ResponseHandler implements ResponseHandlerInterface
     /**
      * @param array $meta
      * @param array $data
-     * @param int $code
-     * @return JsonResponse
+     * @return array
      */
-    public function handle(array $meta, array $data, int $code): JsonResponse
+    public function handle(array $meta, array $data): array
     {
-        return Response::json();
+        // we need to catch parser by config storage.
+        $parser = match (config("rh.STORAGE")) {
+            'redis' => new RedisParser(),
+            default => new JsonParser(),
+        };
+
+        try {
+            $parser->parse();
+
+        }catch (ParserException $exception){
+            dd($exception->getMessage());
+        }
+
+
+        return [
+            "success" => $parser->getSuccess(),
+            "errors" => $parser->getErrors()
+        ];
     }
 }
