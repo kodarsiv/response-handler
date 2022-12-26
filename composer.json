@@ -1,0 +1,22 @@
+{
+    "name": "tanerincode/response-handler",
+    "description": "A laravel package for response handling",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Tanerincode\\ResponseHandler\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Taner Tombas",
+            "email": "tombastaner@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "8.1.*",
+        "illuminate/support": "^9.45.1",
+        "illuminate/http": "^9.45.1"
+    }
+}
