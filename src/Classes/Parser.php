@@ -1,8 +1,8 @@
 <?php
 
-namespace Tanerincode\ResponseHandler\Classes;
+namespace Kodarsiv\ResponseHandler\Classes;
 
-use Tanerincode\ResponseHandler\Contracts\ParserInterface;
+use Kodarsiv\ResponseHandler\Contracts\ParserInterface;
 
 class Parser implements ParserInterface
 {

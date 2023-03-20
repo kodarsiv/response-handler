@@ -1,9 +1,7 @@
 <?php
 
-namespace Tanerincode\ResponseHandler\Contracts;
+namespace Kodarsiv\ResponseHandler\Contracts;
 
-use Illuminate\Http\JsonResponse;
-use Tanerincode\ResponseHandler\Classes\JsonParser;
 
 interface ResponseHandlerInterface
 {

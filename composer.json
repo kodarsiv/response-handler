@@ -1,11 +1,11 @@
 {
-    "name": "tanerincode/response-handler",
+    "name": "kodarsiv/response-handler",
     "version": "0.0.3",
     "description": "A laravel package for response handling",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Tanerincode\\ResponseHandler\\": "src/"
+            "Kodarsiv\\ResponseHandler\\": "src/"
         },
         "files": [
             "src/Functions/rh_functions.php"
@@ -15,6 +15,10 @@
         {
             "name": "Taner Tombas",
             "email": "tombastaner@gmail.com"
+        },
+        {
+            "name": "Fevzi Altay Güvenli",
+            "email": "faguvenli@gmail.com"
         }
     ],
     "minimum-stability": "dev",
@@ -27,7 +31,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Tanerincode\\ResponseHandler\\ResponseHandlerServiceProvider"
+                "Kodarsiv\\ResponseHandler\\ResponseHandlerServiceProvider"
             ]
         }
     }

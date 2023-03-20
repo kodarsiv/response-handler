@@ -1,10 +1,10 @@
 <?php
 
-namespace Tanerincode\ResponseHandler\Classes;
+namespace Kodarsiv\ResponseHandler\Classes;
 
 use Illuminate\Support\Facades\File;
-use Tanerincode\ResponseHandler\Exceptions\CodeAlreadyExistException;
-use Tanerincode\ResponseHandler\Facades\Responder;
+use Kodarsiv\ResponseHandler\Exceptions\CodeAlreadyExistException;
+use Kodarsiv\ResponseHandler\Facades\Responder;
 
 class CodeGenerator
 {

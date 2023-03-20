@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Http\JsonResponse;
-use Tanerincode\ResponseHandler\Exceptions\CodeAlreadyExistException;
-use Tanerincode\ResponseHandler\Exceptions\CodeNotExistException;
-use Tanerincode\ResponseHandler\ResponseHandler;
-use Tanerincode\ResponseHandler\Facades\Responder;
-use Tanerincode\ResponseHandler\Classes\CodeGenerator;
+use Kodarsiv\ResponseHandler\Exceptions\CodeAlreadyExistException;
+use Kodarsiv\ResponseHandler\Exceptions\CodeNotExistException;
+use Kodarsiv\ResponseHandler\ResponseHandler;
+use Kodarsiv\ResponseHandler\Facades\Responder;
+use Kodarsiv\ResponseHandler\Classes\CodeGenerator;
 use Illuminate\Support\Facades\Log;
 
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tanerincode\ResponseHandler\Facades;
+namespace Kodarsiv\ResponseHandler\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

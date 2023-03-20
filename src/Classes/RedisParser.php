@@ -1,9 +1,9 @@
 <?php
 
-namespace Tanerincode\ResponseHandler\Classes;
+namespace Kodarsiv\ResponseHandler\Classes;
 
-use Tanerincode\ResponseHandler\Contracts\ParserInterface;
-use Tanerincode\ResponseHandler\Exceptions\JsonParseException;
+use Kodarsiv\ResponseHandler\Contracts\ParserInterface;
+use Kodarsiv\ResponseHandler\Exceptions\JsonParseException;
 
 class RedisParser implements ParserInterface
 {

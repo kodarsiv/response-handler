@@ -1,6 +1,6 @@
 <?php
 
-namespace Tanerincode\ResponseHandler\Contracts;
+namespace Kodarsiv\ResponseHandler\Contracts;
 
 use Illuminate\Support\Facades\Response;
 

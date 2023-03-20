@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Tanerincode\ResponseHandler;
+namespace Kodarsiv\ResponseHandler;
 
 use Illuminate\Support\ServiceProvider;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tanerincode\ResponseHandler\Exceptions;
+namespace Kodarsiv\ResponseHandler\Exceptions;
 
 use Exception;
 use Throwable;

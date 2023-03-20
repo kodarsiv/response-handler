@@ -1,9 +1,9 @@
 <?php
 
-namespace Tanerincode\ResponseHandler\Classes;
+namespace Kodarsiv\ResponseHandler\Classes;
 
 use Illuminate\Support\Facades\File;
-use Tanerincode\ResponseHandler\Exceptions\JsonParseException;
+use Kodarsiv\ResponseHandler\Exceptions\JsonParseException;
 
 class JsonParser extends Parser
 {

@@ -1,16 +1,16 @@
 <?php
 
-namespace Tanerincode\ResponseHandler;
+namespace Kodarsiv\ResponseHandler;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
-use Tanerincode\ResponseHandler\Classes\JsonParser;
-use Tanerincode\ResponseHandler\Classes\RedisParser;
-use Tanerincode\ResponseHandler\Contracts\ParserInterface;
-use Tanerincode\ResponseHandler\Contracts\ResponseHandlerInterface;
-use Tanerincode\ResponseHandler\Exceptions\CodeNotExistException;
-use Tanerincode\ResponseHandler\Exceptions\ParserException;
-use Tanerincode\ResponseHandler\Facades\Responder;
+use Kodarsiv\ResponseHandler\Classes\JsonParser;
+use Kodarsiv\ResponseHandler\Classes\RedisParser;
+use Kodarsiv\ResponseHandler\Contracts\ParserInterface;
+use Kodarsiv\ResponseHandler\Contracts\ResponseHandlerInterface;
+use Kodarsiv\ResponseHandler\Exceptions\CodeNotExistException;
+use Kodarsiv\ResponseHandler\Exceptions\ParserException;
+use Kodarsiv\ResponseHandler\Facades\Responder;
 
 class ResponseHandler implements ResponseHandlerInterface
 {

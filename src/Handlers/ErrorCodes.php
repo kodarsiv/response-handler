@@ -1,10 +1,10 @@
 <?php
 
-namespace Tanerincode\ResponseHandler\Handlers;
+namespace Kodarsiv\ResponseHandler\Handlers;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Response;
-use Tanerincode\ResponseHandler\Contracts\CodeInterface;
+use Kodarsiv\ResponseHandler\Contracts\CodeInterface;
 
 class ErrorCodes implements CodeInterface
 {

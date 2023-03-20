@@ -1,9 +1,9 @@
 <?php
 
-namespace Tanerincode\ResponseHandler\Contracts;
+namespace Kodarsiv\ResponseHandler\Contracts;
 
 use Illuminate\Support\Facades\Response;
-use Tanerincode\ResponseHandler\Exceptions\JsonParseException;
+use Kodarsiv\ResponseHandler\Exceptions\JsonParseException;
 
 interface ParserInterface
 {
